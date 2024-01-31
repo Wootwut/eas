@@ -1,13 +1,23 @@
+body{
+    background-color: bisque;
+    display: flex;
+}
 .container{
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
-    height: 50vh;
-    width: 50vw;
-
+    height: 600px;
+    width: 600px;
+    border: 4px solid orange
 }
 .grid-square {
-    width: calc(100% / 16 - 2px ); 
-    height: calc(100% / 16 - 2px );
     border: 1px solid black;
-   
+    
+}
+.black-hover {
+    background-color: black;
+}
+.grid{
+    width: 120px;
+    height: 80px;
 }
