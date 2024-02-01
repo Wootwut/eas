@@ -32,7 +32,7 @@ body {
     background-color: black;
 }
 
-.grid {
+.grid-size{
     width: 120px;
     height: 80px;
 }

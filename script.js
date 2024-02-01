@@ -1,6 +1,14 @@
 const container = document.querySelector(".container")
-const buttonGrid = document.querySelector(".grid")
-buttonGrid.addEventListener('click', function(){
+const btnGridSize = document.querySelector(".grid-size")
+const btnGridReset = document.querySelector(".grid-reset")
+
+btnGridReset.addEventListener('click',function(){
+const gridSquare = document.querySelectorAll("div")
+gridSquare.forEach(gridSquare =>{
+    gridSquare.classList.remove("black-hover")
+})
+})
+btnGridSize.addEventListener('click', function(){
     let choice = window.prompt("Choose a number (max 100)")
     if (choice > 100 ){
         alert("Under 100!");
@@ -14,7 +22,9 @@ function clearGrid(){
     while(container.firstChild){
         container.removeChild(container.firstChild)
     }
+    
 }
+
 function grid(row,column){
     
    
