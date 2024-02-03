@@ -1,21 +1,31 @@
 const container = document.querySelector(".container")
 const btnGridSize = document.querySelector(".grid-size")
 const btnGridReset = document.querySelector(".grid-reset")
+const btnColorChange = document.querySelector(".color-change")
 
+let currentColor = 'black'
+
+//Reset button
 btnGridReset.addEventListener('click',function(){
-const gridSquare = document.querySelectorAll("div")
+const gridSquare = document.querySelectorAll(".grid-square")
 gridSquare.forEach(gridSquare =>{
-    gridSquare.classList.remove("black-hover")
-})
-})
+    gridSquare.style.backgroundColor = '';
+});
+});
+
+btnColorChange.addEventListener('click', function () {
+    currentColor = currentColor === 'black' ? colorBtn() : 'black';
+});
+
+//Changing grid size button
 btnGridSize.addEventListener('click', function(){
     let choice = window.prompt("Choose a number (max 100)")
-    if (choice > 100 ){
-        alert("Under 100!");
-        choice = window.prompt("Choose a number (max 100)")
+    if (choice <= 100){
+        grid(choice, choice);
     }
     else {
-        grid(choice, choice);
+        alert("Please, a number under 100!");
+        choice = window.prompt("Choose a number (max 100)")
     }
 })
 function clearGrid(){
@@ -25,6 +35,14 @@ function clearGrid(){
     
 }
 
+function colorBtn(){
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 function grid(row,column){
     
    
@@ -36,8 +54,9 @@ function grid(row,column){
         gridSquare.style.width = `${640 / column }px`;
         gridSquare.style.height = `${640 / row }px`;
         gridSquare.addEventListener('mouseenter',function(){
-            gridSquare.classList.add('black-hover')
-        })
+            gridSquare.style.backgroundColor = currentColor === 'black' ? 'black' : colorBtn();
+        });
+        
         container.appendChild(gridSquare)
 
        }
